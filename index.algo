@@ -1,40 +1,22 @@
-program SentenceAnalysis;
+ALGORITHM count
+VAR
+    sentenceLength:INTEGER := 0       
+    wordCount := 1             
+    vowelCount = 0            
 
-var
-  sentence: string;
-  i, sentenceLength, wordCount, vowelCount: integer;
-  vowels: set of char;
-
-begin
-  sentenceLength := 0;
-  wordCount := 0;
-  vowelCount := 0;
-  vowels := ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-
-  write('Entrez une phrase se terminant par un point : ');
-  read(sentence);
-  
-  if (length(sentence) = 0) or (sentence[length(sentence)] <> '.') then
-  begin
-    write('Erreur : La phrase doit se terminer par un point.');
-    exit; 
-  end;
-
-  for i := 1 to length(sentence) do
-  begin
-    sentenceLength := sentenceLength + 1;
-
-    if sentence[i] in vowels then
-      vowelCount := vowelCount + 1;
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+BEGIN
     
-    if (sentence[i] = ' ') and (i < length(sentence)) and (sentence[i + 1] in ['A'..'Z', 'a'..'z']) then
-      wordCount := wordCount + 1;
-  end;
-  
-  if sentenceLength > 0 then
-    wordCount := wordCount + 1;
-  
-  write('Longueur de la phrase : ', sentenceLength);
-  write('Nombre de mots : ', wordCount);
-  write('Nombre de voyelles : ', vowelCount);
-end.
+
+    FOR each character IN sentence DO
+            sentenceLength = sentenceLength + 1
+            
+            IF character == ' ' THEN
+                wordCount = wordCount + 1
+            
+            IF character IN vowels THEN
+                vowelCount = vowelCount + 1
+            
+            IF character == '.' THEN
+                BREAK
+END
