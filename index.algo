@@ -1,22 +1,45 @@
-ALGORITHM count
-VAR
-    sentenceLength:INTEGER := 0       
-    wordCount := 1             
-    vowelCount = 0            
+ALGORITHM counter
 
-    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+VAR
+
+    ch: STRING;
+    char: CHAR;
+    nChar, nW, nV: INTEGER;
+    
 BEGIN
+
+    nChar := 0; 
+    nW := 0;
+    nV := 0;
+
+    Write("Put your sentence");
+    Read(ch);
+
+    char := ch[0];
     
 
-    FOR each character IN sentence DO
-            sentenceLength = sentenceLength + 1
-            
-            IF character == ' ' THEN
-                wordCount = wordCount + 1
-            
-            IF character IN vowels THEN
-                vowelCount = vowelCount + 1
-            
-            IF character == '.' THEN
-                BREAK
+    WHILE char <> '.' DO
+
+        nChar := cptChar + 1; 
+
+        IF char = ' ' THEN
+            nW := nW + 1; 
+        END_IF
+        
+        IF (char = 'a') OR (char = 'e') OR (char = 'i') OR (char = 'o') OR (char = 'u') OR (char = 'A') OR (char = 'E') OR (char = 'I') OR (char = 'O') OR (char = 'U')  THEN
+            nV := nV + 1; 
+        END_IF
+
+        char := ch[nChar];
+        
+    END_WHILE
+
+
+
+
+// outputs
+
+    Write("characters: ", nChar + 1);
+    Write("words: ", nW + 1);
+    Write("vowels: ", nV);
 END
